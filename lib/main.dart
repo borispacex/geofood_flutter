@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -68,12 +69,44 @@ class _LoginPageState extends State<LoginPage> {
                 FirebaseAuth.instance.signInWithEmailAndPassword(
                   email: _emailController.text,
                   password: _passwordController.text
-                )
+                ).then(
+                  (FirebaseUser user){
+                    Navigator.of(context).pushReplacement(CupertinoPageRoute(
+                      builder: (context) => Google_Page(),
+                    ));
+                  }
+                ).catchError(
+                  (e){
+                    print(e);
+                  }
+                );
               },
-            )
+            ),
+            FlatButton(
+              child: Text('Register'),
+              color: Colors.green,
+              textColor: Colors.white,
+              onPressed: () => _pushPage(context, RegisterPage()),
+            ),
+            VerticalDivider(),
+            FlatButton(
+              child: Text('Sign in'),
+              color: Colors.green,
+              textColor: Colors.white,
+              onPressed: () => _pushPage(context, SignInPage()),
+            ),
           ],
         ),
       ),
     );
   }
+}
+// funcion para ir a una pagina luego de presionar
+void _pushPage(BuildContext context, Widget page){
+  Navigator.of(context).push(
+    MaterialPageRoute<void>(
+      builder: (_) => page
+    ),
+
+  )
 }
