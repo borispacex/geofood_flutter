@@ -65,6 +65,8 @@ class _GoogleSignInSection extends StatefulWidget {
 }
 
 class __GoogleSignInSectionState extends State<_GoogleSignInSection> {
+  bool _success;
+  String _userId;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -91,17 +93,32 @@ class __GoogleSignInSectionState extends State<_GoogleSignInSection> {
        ],
     );
   }
+  // metodo
+  void _signInWithGoogle() async {
+    final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
+    final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+    final AuthCredential credential = GoogleAuthProvider.getCredential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+    final FirebaseUser user = await _auth.signInWithCredential(credential);
+    assert(user.displayName != null);
+    assert(await user.getIdToken() != null);
+    final FirebaseUser currentUser = await _auth.currentUser();
+    assert(user.uid == currentUser.uid);
+    setState(
+      (){
+        if(user != null){
+          _success = true;
+          _userId = user.uid;
+          Navigator.of(context).pushReplacement(CupertinoPageRoute( // me direcciona a googlePage
+            builder: (context) => MainGoogle(),
+
+          ));
+        }
+      }
+    );
+  }
 }
 
-void _signInWithGoogle() async {
-  final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
-  final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-  final AuthCredential credential = GoogleAuthProvider.getCredential(
-    accessToken: googleAuth.accessToken,
-    idToken: googleAuth.idToken,
-  );
-  final FirebaseUser user = await _auth.signInWithCredential(credential);
-  assert(user.displayName != null);
-  assert(await user);
 
-}
