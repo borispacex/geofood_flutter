@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:geofood_flutter/googlePage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final GoogleSignIn _googleSignIn = GoogleSignIn();
 
-// stflbldr
 class SignInPage extends StatefulWidget {
   final String title = 'Registration';
-
   State<StatefulWidget> createState() => _SignInPageState();
 }
 
@@ -38,7 +37,7 @@ class _SignInPageState extends State<SignInPage> {
                      content: Text(uid + ' has succesfully signed out'),
                    ));
                  },
-               )
+               );
              },
            )
          ],
@@ -49,9 +48,9 @@ class _SignInPageState extends State<SignInPage> {
              scrollDirection: Axis.vertical,
              children: <Widget>[
                _GoogleSignInSection(),
-             ]
-           )
-         },
+             ],
+           );
+         }),
     );
   }
 }
@@ -113,7 +112,6 @@ class __GoogleSignInSectionState extends State<_GoogleSignInSection> {
           _userId = user.uid;
           Navigator.of(context).pushReplacement(CupertinoPageRoute( // me direcciona a googlePage
             builder: (context) => MainGoogle(),
-
           ));
         }
       }

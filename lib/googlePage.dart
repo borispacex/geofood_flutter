@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class GoogleScreen extends StatefulWidget {
+class MainGoogle extends StatefulWidget {
   final Widget child;
-  GoogleScreen({ Key key, this.child }) : super(key : key);
+  MainGoogle({ Key key, this.child }) : super(key : key);
   @override
-  _GoogleScreenState createState() => _GoogleScreenState();
+  _MainGoogleState createState() => _MainGoogleState();
 }
 
-class _GoogleScreenState extends State<GoogleScreen> {
+class _MainGoogleState extends State<MainGoogle> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
