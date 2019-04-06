@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:geofood_flutter/emailPage.dart';
+import 'package:geofood_flutter/register_page.dart';
+import 'package:geofood_flutter/signin_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,9 +15,6 @@ class MyApp extends StatelessWidget {
       home: LoginPage(
         title: 'Firebase Auth',
       ),
-      routes: <String, WidgetBuilder>{
-        '/home': (BuildContext context) => new MyHome(),
-      },
     );
   }
 }
@@ -72,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
                 ).then(
                   (FirebaseUser user){
                     Navigator.of(context).pushReplacement(CupertinoPageRoute(
-                      builder: (context) => Google_Page(),
+                      builder: (context) => EmailScreen(),
                     ));
                   }
                 ).catchError(
@@ -107,6 +107,5 @@ void _pushPage(BuildContext context, Widget page){
     MaterialPageRoute<void>(
       builder: (_) => page
     ),
-
-  )
+  );
 }

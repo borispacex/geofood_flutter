@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "365205449081",
+    "firebase_url": "https://geofood-a5245.firebaseio.com",
+    "project_id": "geofood-a5245",
+    "storage_bucket": "geofood-a5245.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:365205449081:android:1347b9b5b9f38ec1",
+        "android_client_info": {
+          "package_name": "com.example.geofood_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFOpZQVcCT0jgY0hc6zCiaE8QSEfnkbHs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "365205449081-n33rbjn5pse0v30cd2k8lkc4rurf3opg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
