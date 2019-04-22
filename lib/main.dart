@@ -207,6 +207,7 @@ class _MyAppState extends State<MyApp> {
                   color: Colors.grey,
                   size: 15.0,
                 ),
+                SizedBox(width: 2.0,),
                 Text('ORDENADOS',
                   style: TextStyle(
                     color: Colors.grey,
@@ -221,6 +222,7 @@ class _MyAppState extends State<MyApp> {
           Padding(
             padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
             child: ListView.builder(
+              scrollDirection: Axis.vertical,
               shrinkWrap: true,
               itemCount: _resinfo.length,
               itemBuilder: (context, index){
@@ -235,7 +237,7 @@ class _MyAppState extends State<MyApp> {
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Image.asset(resinfo.image2, fit: BoxFit.fill,),
-                      ),
+                      ),git 
                       title: Text(
                         resinfo.resName,
                         style: TextStyle(
@@ -258,7 +260,6 @@ class _MyAppState extends State<MyApp> {
                             children: <Widget>[
                               Text('2 salidas cerca tuyo'),
                               Icon(Icons.keyboard_arrow_down),
-
                             ],
                           ),
                           Divider(
@@ -314,7 +315,7 @@ class _MyAppState extends State<MyApp> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 20.0),
+                    SizedBox(height: 10.0),
                   ],
                 );
               },
@@ -322,6 +323,62 @@ class _MyAppState extends State<MyApp> {
           ),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+
+        },
+        backgroundColor: Colors.white,
+        elevation: 2.0,
+        child: Material(
+          color: Colors.grey[100],
+          shape: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(50.0),
+            borderSide: BorderSide(
+              color: Colors.grey[400],
+              width: 1.0,
+            ),
+          ),
+          child: Container(
+            height: 50.0,
+            width: 50.0,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text('geoFood',
+                  style: TextStyle(
+                    color: Colors.orange,
+                    fontSize: 12.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        fixedColor: Colors.orange,
+        type: BottomNavigationBarType.fixed,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.location_on, color: Colors.black),
+            title: Text('Cerca', style: TextStyle(color: Colors.black),),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search, color: Colors.black),
+            title: Text('Explorar', style: TextStyle(color: Colors.black),),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.card_travel, color: Colors.black),
+            title: Text('Carta', style: TextStyle(color: Colors.black),),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person, color: Colors.black),
+            title: Text('Cuenta', style: TextStyle(color: Colors.black),),
+          ),
+        ],
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
@@ -335,7 +392,7 @@ class OfferAds {
 
 List<OfferAds> _offerlist = <OfferAds>[
   OfferAds(image1: 'assets/images/res1.jpg', refer: 'OFERTA'),
-  OfferAds(image1: 'assets/images/res2.jpg', refer: 'REFERENCIA'),
+  OfferAds(image1: 'assets/images/res2.jpg', refer: 'REFER..'),
   OfferAds(image1: 'assets/images/res3.jpg', refer: 'OFERTA'),
 ];
 
@@ -370,4 +427,11 @@ List<Resname> _resinfo = <Resname>[
       resTime: '30',
       resPrice: 'Bs. 40',
       resRating: '4.2'),
+  Resname(
+      image2: 'assets/images/res3.png',
+      resName: "Pizza Eli's",
+      resType: "Comida rapida, Pizza",
+      resTime: '35',
+      resPrice: 'Bs. 60',
+      resRating: '4.8'),
 ];

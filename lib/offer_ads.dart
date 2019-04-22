@@ -43,5 +43,4 @@ List<Resname> _resname = <Resname>[
     resPrice: 'Bs. 40',
     resRating: '4.2'
   ),
-
 ];
