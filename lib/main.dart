@@ -51,15 +51,18 @@ class _MyAppState extends State<MyApp> {
           Column(
             children: <Widget>[
               Container(
-                height: 20.0,
+                height: 32.0,
                 width: 120.0,
                 child: TextField(
                     decoration: InputDecoration(
-                        border:
-                            OutlineInputBorder(borderSide: BorderSide.none))),
+                      hintText: 'Buscar',
+                      border: OutlineInputBorder(borderSide: BorderSide.none),
+
+                    )
+                ),
               ),
               SizedBox(
-                height: 5.0,
+                height: 1.0,
               ),
               Text('.........................',
                   style: TextStyle(color: Colors.black, fontSize: 15.0)),
@@ -74,7 +77,7 @@ class _MyAppState extends State<MyApp> {
               child: Text('Ofertas',
                   style: TextStyle(
                       color: Colors.black,
-                      fontSize: 12.0,
+                      fontSize: 14.0,
                       fontWeight: FontWeight.bold,
                   )
               )
@@ -101,7 +104,7 @@ class _MyAppState extends State<MyApp> {
               ),
             ),
           ),
-          SizedBox(width: 10.0),
+          SizedBox(width: 5.0),
         ],
       ),
       backgroundColor: Colors.white,
@@ -187,6 +190,136 @@ class _MyAppState extends State<MyApp> {
               ],
             ),
           ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(15.0, 0.0, 15.0 , 0.0),
+            child: Row(
+              children: <Widget>[
+                Text('13 Restaurantes',
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.bold
+                  ),
+                ),
+                SizedBox(width: 100.0,),
+                Icon(
+                  Icons.sort,
+                  color: Colors.grey,
+                  size: 15.0,
+                ),
+                Text('ORDENADOS',
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.bold
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 15.0,),
+          Padding(
+            padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+            child: ListView.builder(
+              shrinkWrap: true,
+              itemCount: _resinfo.length,
+              itemBuilder: (context, index){
+                final resinfo = _resinfo[index];
+                return Column(
+                  children: <Widget>[
+                    ListTile(
+                      leading: Container(
+                        height: 100.0,
+                        width: 100.0,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: Image.asset(resinfo.image2, fit: BoxFit.fill,),
+                      ),
+                      title: Text(
+                        resinfo.resName,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold
+                        ),
+                      ),
+                      subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(resinfo.resType,
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.bold
+                            ),
+                          ),
+                          SizedBox(height: 10.0,),
+                          Row(
+                            children: <Widget>[
+                              Text('2 salidas cerca tuyo'),
+                              Icon(Icons.keyboard_arrow_down),
+
+                            ],
+                          ),
+                          Divider(
+                            height: 10.0,
+                            color: Colors.grey,
+                          ),
+                          SizedBox(height: 10.0,),
+                          Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.star, 
+                                size: 15.0, 
+                                color: Colors.grey,
+                              ),
+                              SizedBox(width: 2.0,),
+                              Text(
+                                resinfo.resRating,
+                                style: TextStyle(
+                                  fontSize: 15.0,
+                                  color: Colors.grey
+                                ),
+                              ),
+                              SizedBox(width: 8.0,),
+                              Icon(
+                                Icons.brightness_1,
+                                color: Colors.grey,
+                                size: 8.0,
+                              ),
+                              SizedBox(width: 5.0,),
+                              Text(
+                                resinfo.resTime+' mins',
+                                style: TextStyle(
+                                  fontSize: 15.0,
+                                  color: Colors.grey
+                                ),
+                              ),
+                              SizedBox(width: 8.0,),
+                              Icon(
+                                Icons.fastfood,
+                                color: Colors.grey,
+                                size: 8.0,
+                              ),
+                              SizedBox(width: 5.0,),
+                              Text(
+                                resinfo.resPrice,
+                                style: TextStyle(
+                                  fontSize: 15.0,
+                                  color: Colors.grey
+                                ),
+                              ),          
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 20.0),
+                  ],
+                );
+              },
+            ),
+          ),
         ],
       ),
     );
@@ -222,7 +355,7 @@ class Resname {
   String resPrice;
 }
 
-List<Resname> _resname = <Resname>[
+List<Resname> _resinfo = <Resname>[
   Resname(
       image2: 'assets/images/res1.png',
       resName: 'Don Pollo',
