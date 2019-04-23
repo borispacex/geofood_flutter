@@ -147,12 +147,7 @@ class _MyAppState extends State<MyApp> {
                               elevation: 1.0,
                               child: Stack(
                                 children: <Widget>[
-                                  Image.asset(
-                                    offerlist.image1,
-                                    fit: BoxFit.fill,
-                                    height: 190.0,
-                                    width: 190.0,
-                                  ),
+                                  Image.asset(offerlist.image1, fit: BoxFit.fill, height: 190.0, width: 190.0 ),
                                   Positioned(
                                     left: 15.0,
                                     top: 15.0,
@@ -237,7 +232,8 @@ class _MyAppState extends State<MyApp> {
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Image.asset(resinfo.image2, fit: BoxFit.fill,),
-                      ),git 
+                        // IMAGEN
+                      ),
                       title: Text(
                         resinfo.resName,
                         style: TextStyle(
