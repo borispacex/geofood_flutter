@@ -301,10 +301,7 @@ class _MyAppState extends State<MyApp> {
                               SizedBox(width: 5.0,),
                               Text(
                                 resinfo.resPrice,
-                                style: TextStyle(
-                                  fontSize: 15.0,
-                                  color: Colors.grey
-                                ),
+                                style: TextStyle(fontSize: 15.0, color: Colors.grey),
                               ),          
                             ],
                           )
